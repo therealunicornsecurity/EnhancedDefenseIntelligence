@@ -1,0 +1,40 @@
+# DEVKIT — top-level gitignore
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build / cache
+__pycache__/
+*.py[cod]
+*.so
+*.dylib
+*.dll
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+dist/
+build/
+target/
+*.log
+
+# Environment / secrets — never commit
+.env
+.env.*
+secrets/
+*.key
+*.pem
+id_rsa
+id_ed25519
+kubeconfig
+credentials.json
+
+# Claude Code local-only overrides
+.claude/CLAUDE.local.md
+.claude/settings.local.json
+.claude/sessions/

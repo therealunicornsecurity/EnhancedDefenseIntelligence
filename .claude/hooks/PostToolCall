@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# PostToolCall — scan tool output for potential secrets and warn.
+# Non-blocking; the warning surfaces in the transcript but does not abort the call.
+# Pairs with RULES.md §5.1 (Secrets Handling) — the developer's reminder layer.
+
+OUTPUT="$1"
+
+if echo "$OUTPUT" | grep -qiE '(api[_-]?key|password|secret|token)\s*[=:]\s*[A-Za-z0-9+/]{16,}'; then
+    echo "WARNING: Potential secret in tool output. Do not commit. See RULES.md §5.1." >&2
+fi
+
+exit 0

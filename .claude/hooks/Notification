@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Notification — append events to .claude/logs/events.log (best-effort).
+
+EVENT="$1"
+MESSAGE="$2"
+TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+LOG="$(git rev-parse --show-toplevel 2>/dev/null)/.claude/logs/events.log"
+
+mkdir -p "$(dirname "$LOG")"
+echo "[$TIMESTAMP] $EVENT: $MESSAGE" >> "$LOG" 2>/dev/null || true
+
+exit 0

@@ -1,0 +1,10 @@
+build/
+*.o
+*.so
+*.a
+*.exe
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.env
+credentials.*

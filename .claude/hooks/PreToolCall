@@ -1,0 +1,109 @@
+#!/usr/bin/env bash
+# PreToolCall — enforce workspace boundary rules (RULES.md §5)
+#
+# The rule statement lives in RULES.md §5 "Workspace Boundary Rules" item 1
+# and §8 rule 11. This script is the enforcement mechanism — do not
+# duplicate the rule in comments here.
+#
+# Interface: Claude Code passes a JSON object on stdin describing the
+# tool invocation. Exit 0 = allow. Exit 2 + stderr = block (message
+# visible to the model).
+#
+# Allowed roots for filesystem tools:
+#   $CLAUDE_PROJECT_DIR (the active repo)
+#   /tmp/                (scratch space)
+#   Anything in $DEVKIT_BOUNDARY_EXTRA (colon-separated, optional per-session override)
+
+set -u
+
+INPUT=$(cat)
+
+read_json() {
+    # $1: dotted path, e.g. tool_name or tool_input.file_path
+    python3 -c '
+import json, sys
+data = json.loads(sys.argv[1])
+for key in sys.argv[2].split("."):
+    if isinstance(data, dict):
+        data = data.get(key, "")
+    else:
+        data = ""
+        break
+print(data if isinstance(data, str) else "")
+' "$INPUT" "$1"
+}
+
+TOOL=$(read_json tool_name)
+
+REPO="${CLAUDE_PROJECT_DIR:-$PWD}"
+
+# Build allowed-roots list.
+ALLOWED_ROOTS=("$REPO" "/tmp")
+if [ -n "${DEVKIT_BOUNDARY_EXTRA:-}" ]; then
+    IFS=':' read -ra EXTRA <<< "$DEVKIT_BOUNDARY_EXTRA"
+    for r in "${EXTRA[@]}"; do
+        [ -n "$r" ] && ALLOWED_ROOTS+=("$r")
+    done
+fi
+
+in_scope() {
+    local p="$1"
+    [ -z "$p" ] && return 0
+    case "$p" in
+        /*) ;;
+        *) p="$REPO/$p" ;;
+    esac
+    local root
+    for root in "${ALLOWED_ROOTS[@]}"; do
+        case "$p" in
+            "$root"|"$root"/*) return 0 ;;
+        esac
+    done
+    return 1
+}
+
+block() {
+    local tool="$1" path="$2"
+    echo "BLOCKED ($tool): path '$path' is outside the workspace boundary." >&2
+    echo "Allowed roots: ${ALLOWED_ROOTS[*]}" >&2
+    echo "See RULES.md §5 (Workspace Boundary Rules). To extend for this shell: export DEVKIT_BOUNDARY_EXTRA=/path1:/path2" >&2
+    exit 2
+}
+
+case "$TOOL" in
+    Read|Edit|Write|NotebookEdit)
+        FP=$(read_json tool_input.file_path)
+        if ! in_scope "$FP"; then
+            block "$TOOL" "$FP"
+        fi
+        ;;
+    Glob|Grep)
+        P=$(read_json tool_input.path)
+        if ! in_scope "$P"; then
+            block "$TOOL" "$P"
+        fi
+        ;;
+    Bash)
+        CMD=$(read_json tool_input.command)
+        # Match program name at start-of-statement only: start of line, or
+        # after a shell separator (; & | newline) or subshell open. This
+        # avoids false positives on the word appearing in echo strings or
+        # comments.
+        SEP='(^|[;&|(])[[:space:]]*'
+        END='([[:space:]]|$)'
+        if echo "$CMD" | grep -qE "${SEP}git${END}"; then
+            echo "BLOCKED (Bash): git commands require explicit permission. See RULES.md §5." >&2
+            exit 2
+        fi
+        if echo "$CMD" | grep -qE "${SEP}gh${END}"; then
+            echo "BLOCKED (Bash): gh commands require explicit permission. See RULES.md §5." >&2
+            exit 2
+        fi
+        if echo "$CMD" | grep -qE "${SEP}(curl|wget)${END}"; then
+            echo "BLOCKED (Bash): remote HTTP requests require explicit permission. See RULES.md §5." >&2
+            exit 2
+        fi
+        ;;
+esac
+
+exit 0

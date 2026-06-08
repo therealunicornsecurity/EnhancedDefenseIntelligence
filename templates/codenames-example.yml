@@ -1,0 +1,39 @@
+# Codename pool — replace with whatever theme fits your project.
+# Schema:
+#   pool:      list of codenames grouped by tier (1 = MAJOR, 2 = MINOR, 3-4 = overflow)
+#   assigned:  list of {name, repo, version, date} entries, appended once consumed
+#
+# Starter theme: constellations (neutral, plentiful, easy to extend).
+
+pool:
+  tier1:    # reserved for MAJOR releases
+    - Orion
+    - Andromeda
+    - Cassiopeia
+    - Cygnus
+    - Lyra
+  tier2:    # reserved for MINOR releases
+    - Aquila
+    - Bootes
+    - Carina
+    - Draco
+    - Hercules
+    - Hydra
+    - Lupus
+    - Perseus
+    - Phoenix
+    - Vela
+  tier3:    # overflow
+    - Centaurus
+    - Lynx
+    - Pavo
+    - Pegasus
+    - Ursa
+  tier4:    # overflow
+    - Aries
+    - Auriga
+    - Corvus
+    - Sagitta
+    - Tucana
+
+assigned: []

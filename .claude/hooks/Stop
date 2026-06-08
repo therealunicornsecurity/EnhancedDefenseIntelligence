@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Stop — remind to run tests before closing the session.
+
+printf '\n%s\n' '─────────────────────────────────────────────'
+printf '%s\n'   '  Reminder: make test && make nonreg'
+printf '%s\n'   '  before closing this session.'
+printf '%s\n\n' '─────────────────────────────────────────────'
+
+exit 0

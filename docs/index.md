@@ -8,7 +8,7 @@ Last updated: 2026-05-25
 |------|-------------|-------|
 | `docs/index.md` | This file | — |
 | `README.md` | Top-level kit explainer, quick start, "what's in the box" | — |
-| `RULES.md` | Kit-self law (rendered from `templates/RULES.md` with `DEVKIT`/`polyglot`) — the kit applies its own rules to itself | — |
+| `RULES.md` | Kit-self law (rendered from `templates/RULES.md` with `EDI`/`polyglot`) — the kit applies its own rules to itself | — |
 | `Makefile` | Kit-self Makefile (rendered from `templates/Makefile`) | — |
 | `VERSION` | Kit version (`MAJOR.MINOR.PATCH[-CODENAME]`) | 1 |
 | `CHANGELOG.md` | Kit version history | — |

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ═══════════════════════════════════════════════════════════════════════
-# edi.sh — DEVKIT scaffolder + sync tool
+# edi.sh — EDI scaffolder + sync tool
 # ═══════════════════════════════════════════════════════════════════════
 # Usage:
 #   edi.sh init <name> <language>       Scaffold a new repo from this kit

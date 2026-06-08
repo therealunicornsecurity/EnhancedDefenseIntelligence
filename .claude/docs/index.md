@@ -4,7 +4,7 @@ Update after every doc change.
 
 | File | Description | Lines |
 |------|-------------|-------|
-| `CLAUDE.md` | Workspace law — DEVKIT rules for Claude Code | - |
+| `CLAUDE.md` | Workspace law — EDI rules for Claude Code | - |
 | `commands/procedure_a.md` | TDD workflow (8 steps) | - |
 | `commands/procedure_b.md` | Code quality review (9 steps) | - |
 | `commands/new_tool.md` | Scaffold a new repo via edi.sh | - |

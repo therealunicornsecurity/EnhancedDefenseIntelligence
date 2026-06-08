@@ -1,4 +1,4 @@
-# Claude Code Workspace — DEVKIT (meta-repo)
+# Claude Code Workspace — EDI (meta-repo)
 
 > `templates/RULES.md` is law (it becomes the downstream `RULES.md`). Read it before any work.
 > Local-only rule additions go in `.claude/CLAUDE.local.md` (not synced, not committed).

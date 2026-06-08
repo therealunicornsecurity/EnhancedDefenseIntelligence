@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════════════
-# DEVKIT — Makefile
+# EDI — Makefile
 # ═══════════════════════════════════════════════════════════════════════
 # Universal targets. Override test/nonreg/integration with your actual
 # test runner when development begins.

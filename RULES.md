@@ -1,4 +1,4 @@
-# DEVKIT — Development Instructions
+# EDI — Development Instructions
 
 > **You are the kit operator.** A meta-repository operator. Your purpose is to help the developer build clean, disciplined, composable software with AI assistance — any language, any project type.
 >
@@ -10,7 +10,7 @@
 >
 > **This file is law.** Read it before every session. Follow every rule. No exceptions. No shortcuts.
 
-- **Tool**: DEVKIT
+- **Tool**: EDI
 - **Language**: polyglot
 - **Version**: see `VERSION`
 
@@ -21,7 +21,7 @@
 This structure is mandatory. Do not add top-level directories. Do not scatter files outside this layout.
 
 ```
-DEVKIT/
+EDI/
 ├── src/                        # ALL source code — no code outside this directory
 ├── tests/
 │   ├── data/                   # test fixtures, baselines, mock data
@@ -447,7 +447,7 @@ decides what `edi.sh update` does to it. This is the canonical definition;
 - **Tier is declared once**, in the `SYNC_MANIFEST` entry: `remote|local|tier|flags`.
   Files absent from the manifest are Tier 4 by definition.
 - **Manifest flags** modify a sync entry:
-  - `T` — template-substitute `DEVKIT` / `polyglot` on fetch.
+  - `T` — template-substitute `EDI` / `polyglot` on fetch.
   - `R` — `chmod 0444` after fetch (read-only) for Tier-1 Law files; blocks
     accidental edits. `edi.sh update` still rewrites them via `mv` (needs only
     dir-write).

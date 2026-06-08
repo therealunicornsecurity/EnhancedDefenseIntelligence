@@ -1,12 +1,12 @@
 # Changelog
 
-All notable changes to DEVKIT are recorded here. Format follows the kit's own VERSIONING.md.
+All notable changes to EDI are recorded here. Format follows the kit's own VERSIONING.md.
 
 ## [1.0.0-Andromeda] - 2026-06-08
 ### Changed
 - **BREAKING:** renamed the scaffolder `kit.sh` → `edi.sh`; all references updated across the repo (`SYNC_MANIFEST`, commands, skills, docs, RULES).
 - Hardened `/tag`: the step-7 output is the git command block only — no co-author / AI / sign-off trailers — with a worked example embedded in the command.
-- Rewrote and rebranded the README: DEVKIT → EDI (Enhanced Defense Intelligence).
+- Rewrote and rebranded the README and the kit to EDI (Enhanced Defense Intelligence).
 ### Added
 - `configs/codenames.yml` bootstrapped from `templates/codenames-example.yml`; `Orion` (0.1.0) marked consumed and `Andromeda` assigned to 1.0.0.
 

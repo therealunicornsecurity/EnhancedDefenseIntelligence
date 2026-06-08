@@ -2,6 +2,10 @@
 
 All notable changes to EDI are recorded here. Format follows the kit's own VERSIONING.md.
 
+## [1.0.1-Andromeda] - 2026-06-08
+### Added
+- `edi.ps1` — PowerShell 7 port of the `edi.sh` scaffolder (full `init`/`update`/`comply`/`help` parity, identical 26-entry sync manifest).
+
 ## [1.0.0-Andromeda] - 2026-06-08
 ### Changed
 - **BREAKING:** renamed the scaffolder `kit.sh` → `edi.sh`; all references updated across the repo (`SYNC_MANIFEST`, commands, skills, docs, RULES).

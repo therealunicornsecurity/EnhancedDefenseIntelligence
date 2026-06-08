@@ -11,7 +11,7 @@
 
 <div align="center">
 
-![version](https://img.shields.io/badge/version-1.0.0--Andromeda-6e40c9)
+![version](https://img.shields.io/badge/version-1.0.1--Andromeda-6e40c9)
 ![claude code](https://img.shields.io/badge/Claude_Code-workspace-d97757)
 ![languages](https://img.shields.io/badge/languages-8-2ea043)
 ![law](https://img.shields.io/badge/RULES.md-is_law-c9302c)

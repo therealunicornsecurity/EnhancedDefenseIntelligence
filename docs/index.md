@@ -2,7 +2,7 @@
 
 Documentation files only. Updated after every documentation modification.
 
-Last updated: 2026-05-25
+Last updated: 2026-06-08
 
 | File | Description | Lines |
 |------|-------------|-------|
@@ -23,6 +23,7 @@ Last updated: 2026-05-25
 | `templates/security/c.md` | C-specific forbidden patterns + memory safety flags + `explicit_bzero`/secrets handling + tooling | — |
 | `templates/security/rust.md` | Rust-specific forbidden patterns (`unwrap`/`unsafe` discipline/async) + `secrecy`/`zeroize` + tooling | — |
 | `templates/security/go.md` | Go-specific forbidden patterns + concurrency rules + secrets handling + tooling | — |
+| `templates/security-review.yml` | Opt-in CI security-review workflow → `.github/workflows/security-review.yml` (integrates anthropics/claude-code-security-review, MIT) | — |
 | `templates/gitignore.python` | Python `.gitignore` | — |
 | `templates/gitignore.go` | Go `.gitignore` | — |
 | `templates/gitignore.typescript` | TypeScript `.gitignore` | — |
@@ -45,6 +46,7 @@ Last updated: 2026-05-25
 | `.claude/skills/perf_benchmark/SKILL.md` | `/perf_benchmark` — before/after benchmark for OPTIMIZE | — |
 | `.claude/skills/deps_audit/SKILL.md` | `/deps_audit` — CVE scan + license compliance gate | — |
 | `.claude/skills/security_scan/SKILL.md` | `/security_scan` — grep src/ for RULES.md §5 forbidden patterns (review step 6 gate) | — |
+| `.claude/skills/security_review/SKILL.md` | `/security_review` — AI semantic security review of the pending diff (review step 6); integrates anthropics/claude-code-security-review (MIT) | — |
 | `.claude/settings.json` | Permissions (deny git/gh/curl/wget) + wires the four hooks | — |
 | `.claude/hooks/PreToolCall` | Workspace-boundary enforcement (blocks reads/writes outside repo + git/gh/curl/wget) | — |
 | `.claude/hooks/PostToolCall` | Warn when tool output contains apparent secrets | — |

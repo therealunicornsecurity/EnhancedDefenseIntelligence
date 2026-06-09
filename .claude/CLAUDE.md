@@ -41,3 +41,4 @@ or add overrides to `.claude/CLAUDE.local.md` (Tier 4).
 | /perf_benchmark | Before/after benchmark (review step 8)   |
 | /deps_audit     | CVE scan + license compliance gate       |
 | /security_scan  | Grep RULES.md §5 forbidden patterns (review step 6) |
+| /security_review | AI semantic security review of the diff — anthropics/claude-code-security-review (review step 6) |

@@ -1,0 +1,41 @@
+# ─────────────────────────────────────────────────────────────────────
+# EDI — opt-in CI security review (AI-powered, diff-scoped).
+# Integrates anthropics/claude-code-security-review (MIT):
+#   https://github.com/anthropics/claude-code-security-review
+#
+# Enable: add a CLAUDE_API_KEY repo secret (must allow Claude API + Claude
+# Code), keep this file at .github/workflows/security-review.yml, push.
+# Reviews every pull request and comments findings.
+#
+# ⚠ Not hardened against prompt injection — review TRUSTED PRs only, and set
+#   "Require approval for all external contributors" on the repository.
+#   Pairs with /security_review (interactive) and /security_scan (grep gate).
+# ─────────────────────────────────────────────────────────────────────
+name: Security Review
+
+permissions:
+  pull-requests: write
+  contents: read
+
+on:
+  pull_request:
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+
+      - uses: anthropics/claude-code-security-review@main
+        with:
+          comment-pr: true
+          claude-api-key: ${{ secrets.CLAUDE_API_KEY }}
+          # ── optional ──────────────────────────────────────────────
+          # claude-model: claude-opus-4-1-20250805
+          # exclude-directories: tests,docs
+          # custom-security-scan-instructions: docs/security.md   # reuse EDI's per-language addendum
+          # false-positive-filtering-instructions: docs/security.md
+          # claudecode-timeout: 20

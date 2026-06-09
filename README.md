@@ -11,7 +11,7 @@
 
 <div align="center">
 
-![version](https://img.shields.io/badge/version-1.0.1--Andromeda-6e40c9)
+![version](https://img.shields.io/badge/version-1.1.0--Andromeda-6e40c9)
 ![claude code](https://img.shields.io/badge/Claude_Code-workspace-d97757)
 ![languages](https://img.shields.io/badge/languages-8-2ea043)
 ![law](https://img.shields.io/badge/RULES.md-is_law-c9302c)
@@ -109,6 +109,7 @@ Claude, and **`make` targets**. Here's the whole surface.
 | `/perf_benchmark` | Before/after profiling for the OPTIMIZE step (regressions block) |
 | `/deps_audit` | CVE scan + license-compliance gate (review step 0, **blocking**) |
 | `/security_scan` | Grep `src/` for RULES.md §5 forbidden patterns (review step 6, **blocking**) |
+| `/security_review` | AI semantic security review of the pending diff — complements `/security_scan` at review step 6; integrates [anthropics/claude-code-security-review](https://github.com/anthropics/claude-code-security-review) (MIT) |
 
 ### `make` targets — every scaffolded repo implements these
 

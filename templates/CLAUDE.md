@@ -40,4 +40,5 @@ or add overrides to `.claude/CLAUDE.local.md` (Tier 4).
 | /test_gen       | Generate test suites                     |
 | /deps_audit     | CVE scan + license compliance gate       |
 | /security_scan  | Grep RULES.md §5 forbidden patterns (review step 6) |
+| /security_review | AI semantic security review of the diff (review step 6) |
 | /perf_benchmark | Before/after benchmark (review step 8)   |

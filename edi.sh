@@ -61,6 +61,7 @@ SYNC_MANIFEST=(
     ".claude/skills/perf_benchmark/SKILL.md|.claude/skills/perf_benchmark/SKILL.md|1|"
     ".claude/skills/deps_audit/SKILL.md|.claude/skills/deps_audit/SKILL.md|1|"
     ".claude/skills/security_scan/SKILL.md|.claude/skills/security_scan/SKILL.md|1|"
+    ".claude/skills/security_review/SKILL.md|.claude/skills/security_review/SKILL.md|1|"
     ".claude/agents/spec_writer.md|.claude/agents/spec_writer.md|3|"
     ".claude/agents/test_writer.md|.claude/agents/test_writer.md|3|"
     ".claude/agents/code_reviewer.md|.claude/agents/code_reviewer.md|3|"
@@ -70,6 +71,7 @@ SYNC_MANIFEST=(
     ".claude/hooks/Stop|.claude/hooks/Stop|1|X"
     ".claude/hooks/Notification|.claude/hooks/Notification|1|X"
     ".claude/settings.json|.claude/settings.json|3|"
+    "templates/security-review.yml|.github/workflows/security-review.yml|3|"
 )
 
 # ─── Helpers ──────────────────────────────────────────────────────────

@@ -12,7 +12,8 @@ Steps are sequential. Each produces findings before proceeding.
 3. LIBRARIES — Extract cross-repo duplicates into shared libraries
 4. NAMING    — Enforce naming conventions (RULES.md §1)
 5. FILES     — Verify repo structure; remove orphans and temp files
-6. SECURITY  — Run `/security_scan`: grep for RULES.md §5 forbidden patterns — BLOCKING
+6. SECURITY  — Run BOTH `/security_scan` (grep RULES.md §5) and `/security_review`
+               (AI semantic pass over the diff) — BLOCKING
 7. REFACTOR  — Extract, rename, flatten nesting, remove dead code.
                Simplify cyclomatic complexity > 10. Use early returns.
 8. OPTIMIZE  — Run `/perf_benchmark before` and `after`. Address: unnecessary

@@ -230,7 +230,11 @@ Verify repo structure matches Section 1. No orphaned files (source without spec,
 
 ### Step 6 — SECURITY: Security Guideline Enforcement
 
-Scan for violations from Section 5 (Security Rules). This is a blocking check.
+Run BOTH security passes — this step is blocking:
+1. `/security_scan` — grep `src/` for the Section 5 forbidden patterns + `docs/security.md` (fast, deterministic).
+2. `/security_review` — AI semantic review of the pending diff (taint flow, injection sinks, auth logic), adapted from anthropics/claude-code-security-review (MIT).
+
+A `/security_scan` hit, or a HIGH finding at confidence ≥ 0.8 from `/security_review`, blocks the step.
 
 ### Step 7 — REFACTOR: Structural Improvements
 

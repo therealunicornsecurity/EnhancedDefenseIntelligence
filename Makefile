@@ -39,7 +39,7 @@ review:
 	@echo "3. LIBRARIES — Extract shared code into libraries"
 	@echo "4. NAMING    — Enforce naming conventions (see RULES.md §1)"
 	@echo "5. FILES     — Enforce file naming and structure"
-	@echo "6. SECURITY  — Check for forbidden patterns (BLOCKING)"
+	@echo "6. SECURITY  — /security_scan (grep §5) + /security_review (AI diff review) (BLOCKING)"
 	@echo "7. REFACTOR  — Structural improvements, dead code removal"
 	@echo "8. OPTIMIZE  — Performance pass (measurably slow code only)"
 	@echo ""

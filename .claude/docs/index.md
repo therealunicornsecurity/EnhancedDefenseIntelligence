@@ -19,6 +19,8 @@ Update after every doc change.
 | `skills/test_gen/SKILL.md` | `/test_gen` — generate test suites | - |
 | `skills/perf_benchmark/SKILL.md` | `/perf_benchmark` — before/after benchmark | - |
 | `skills/deps_audit/SKILL.md` | `/deps_audit` — CVE + license gate | - |
+| `skills/security_scan/SKILL.md` | `/security_scan` — grep RULES.md §5 forbidden patterns (review step 6) | - |
+| `skills/security_review/SKILL.md` | `/security_review` — AI semantic security review of the diff (review step 6) | - |
 | `templates/module_spec.md` | `docs/spec/` skeleton | - |
 | `hooks/PreToolCall` | Block reads/writes outside workspace + git/gh/curl/wget Bash | - |
 | `hooks/PostToolCall` | Warn when secrets appear in tool output | - |

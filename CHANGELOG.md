@@ -2,6 +2,13 @@
 
 All notable changes to EDI are recorded here. Format follows the kit's own VERSIONING.md.
 
+## [1.1.0-Andromeda] - 2026-06-09
+### Added
+- `/security_review` skill — AI-powered, diff-scoped semantic security review (severity + confidence scoring, false-positive filtering). Integrates [anthropics/claude-code-security-review](https://github.com/anthropics/claude-code-security-review) (MIT) and complements the grep-based `/security_scan`.
+- `templates/security-review.yml` — opt-in CI workflow (the upstream GitHub Action), synced to `.github/workflows/security-review.yml` (Tier 3, merge-if-missing). Both new files added to the `edi.sh` and `edi.ps1` sync manifests.
+### Changed
+- **Procedure B Step 6 (SECURITY) now runs BOTH passes** — `/security_scan` (grep §5) and `/security_review` (AI diff review); both blocking. Updated `RULES.md`, `templates/RULES.md`, `procedure_b.md`, `Makefile`, `templates/Makefile`, the CLAUDE skills tables, and both doc indexes.
+
 ## [1.0.1-Andromeda] - 2026-06-08
 ### Added
 - `edi.ps1` — PowerShell 7 port of the `edi.sh` scaffolder (full `init`/`update`/`comply`/`help` parity, identical 26-entry sync manifest).
